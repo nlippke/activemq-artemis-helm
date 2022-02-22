@@ -48,7 +48,8 @@ spec:
                   release: {{ .Release.Name | quote }}
                   component: slave
         {{- end }}
-      imagePullSecrets: {{ toYaml .Values.image.pullSecrets }}
+      imagePullSecrets:
+{{ toYaml .Values.image.pullSecrets | indent 6 }}
       initContainers:
       - name: configure-cluster
         image: {{ template "artemis.image" . }}

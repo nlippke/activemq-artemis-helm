@@ -1,6 +1,7 @@
 name: activemq-artemis
-version: 0.0.2
-appVersion: 2.6.2
+version: 0.0.3
+apiVersion: v2
+appVersion: 2.20.0-alpine
 description: a multi-protocol, embeddable, very high performance, clustered, asynchronous messaging system.
 keywords:
 - activemq

@@ -13,7 +13,8 @@ spec:
     - name: tools-{{ include "artemis.fullname" . }}-cluster-formation
       configMap:
         name: tools-{{ include "artemis.fullname" . }}-cluster-formation
-  imagePullSecrets: {{ toYaml .Values.image.pullSecrets }}
+  imagePullSecrets:
+{{ toYaml .Values.image.pullSecrets | indent 2 }}
   containers:
   - name: {{ .Release.Name }}-cluster-formation
     image: {{ template "artemis.image" . }}

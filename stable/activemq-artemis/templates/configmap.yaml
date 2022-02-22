@@ -6,7 +6,7 @@ metadata:
 {{ include "artemis.labels.standard" . | indent 4 }}
 data:
 
-  template-common.xml: |
+  broker-10.xml: |
     <configuration xmlns="urn:activemq" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:activemq /schema/artemis-configuration.xsd">
       <core xmlns="urn:activemq:core" xsi:schemaLocation="urn:activemq:core ">
 
@@ -51,4 +51,13 @@ data:
        </cluster-connections>
       </core>
     </configuration>
+
+  {{ $currentScope := . }}
+  {{ range $path, $_ := .Files.Glob  "etc-overrides/*.xml" }}
+  {{ base $path }}: |
+    {{- with $currentScope }}
+{{ .Files.Get $path | indent 4 }}
+    {{- end }}
+  {{- end }}
+
 

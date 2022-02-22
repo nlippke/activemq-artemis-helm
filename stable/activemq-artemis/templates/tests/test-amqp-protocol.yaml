@@ -8,7 +8,8 @@ metadata:
   labels:
 {{ include "artemis.labels.standard" . | indent 4 }}
 spec:
-  imagePullSecrets: {{ toYaml .Values.image.pullSecrets }}
+  imagePullSecrets:
+{{ toYaml .Values.image.pullSecrets | indent 2 }}
   containers:
   - name: {{ .Release.Name }}-amqp-test
     image: {{ template "artemis.image" . }}

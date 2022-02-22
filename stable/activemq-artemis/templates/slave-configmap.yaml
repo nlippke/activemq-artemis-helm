@@ -13,6 +13,7 @@ data:
           <replication>
             <slave>
               <group-name>to-be-set-by-configure-cluster.sh</group-name>
+              <allow-failback>true</allow-failback>
             </slave>
           </replication>
         </ha-policy>
@@ -28,7 +29,7 @@ data:
 
     set -e
     echo Copying common configuration
-    cp /opt/configure-common/template-common.xml /var/lib/artemis/etc-override/broker-10.xml
+    cp /opt/configure-common/*.xml /var/lib/artemis/etc-override
 
     echo Assigning node as slave
     cp /opt/configure-slave/template-slave.xml /var/lib/artemis/etc-override/broker-11.xml 
